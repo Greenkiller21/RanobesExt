@@ -1,8 +1,10 @@
+/* Callbacks */
+
 /**
  * This callback is for the bookmarks callback
  * @callback BookmarksAction
  * @param {HTMLAnchorElement} anchor The \<a> element
- * @returns {void} Nothing
+ * @returns {void}
  */
 
 /* Constants */
@@ -12,15 +14,24 @@ const BASE_FOLDER = "Novel";
 var allIds = getAllIds();
 
 modifyBookmarks("not_finished", (a) => {
-    a.style.setProperty('color', 'red', 'important');
+    a.style.setProperty('color', 'black', 'important');
+    if (a.parentElement.className === "title") {
+        a.textContent = "❌ " + a.textContent;
+    }
 });
 
 modifyBookmarks("to_read", (a) => {
-    a.style.setProperty('color', 'yellow', 'important');
+    a.style.setProperty('color', 'black', 'important');
+    if (a.parentElement.className === "title") {
+        a.textContent = "⌛ "  + a.textContent;
+    }
 });
 
 modifyBookmarks("finished", (a) => {
-    a.style.setProperty('color', 'green', 'important');
+    a.style.setProperty('color', 'black', 'important');
+    if (a.parentElement.className === "title") {
+        a.textContent = "✅ " + a.textContent;
+    }
 });
 
 /**
