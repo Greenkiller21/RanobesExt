@@ -1,0 +1,21 @@
+{
+  "name": "Ranobes",
+  "description": "Extension for Ranobes - Seen novels",
+  "version": "1.0",
+  "manifest_version": 3,
+  "background": {
+    "service_worker": "background.js"
+  },
+  "permissions": [
+    "activeTab",
+    "scripting",
+    "bookmarks"
+  ],
+  "content_scripts": [
+    {
+      "matches": ["*://ranobes.net/*"],
+      "js": ["ranobes.js"]
+    }
+  ],
+  "host_permissions": ["*://ranobes.net/*"]
+}
