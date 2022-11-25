@@ -1,17 +1,17 @@
 chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
     if (request.action === "get-bookmarks") {
         chrome.bookmarks.getTree((bookmarks) => {
-
-            console.log(bookmarks[0]);
-            var bar = getChildren(bookmarks[0], "Bookmarks bar");
-            console.log(bar);
+            var bar;
+            try {
+                bar = getChildren(bookmarks[0], "Bookmarks bar");
+            } catch (e) {
+                bar = getChildren(bookmarks[0], "Bookmarks");
+            }
 
             var current = bar;
             for (var folder of request.params.folder) {
                 current = getChildren(current, folder);
             }
-
-            console.log(current.children);
 
             sendResponse(current.children);
         });
