@@ -12,6 +12,7 @@ const BASE_FOLDER = "Novel";
 
 /* Already seen novels */
 var allIds = getAllIds();
+removeAllAds();
 
 modifyBookmarks("not_finished", (a) => {
     a.style.setProperty('color', 'black', 'important');
@@ -33,6 +34,19 @@ modifyBookmarks("finished", (a) => {
         a.textContent = "✅ " + a.textContent;
     }
 });
+
+/**
+ * Removes all ads on the current page
+ */
+function removeAllAds() {
+    var divs = document.getElementsByTagName("div");
+    for (var div of divs) {
+        console.log(div);
+        if (div.hasAttribute("align") && div.children.length >= 2 && div.children[1].tagName.toLowerCase() == "script") {
+            div.remove();
+        }
+    }
+}
 
 /**
  * Modifies the style of all the <a> with a href contained in the bookmarks
