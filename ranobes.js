@@ -39,16 +39,21 @@ modifyBookmarks("finished", (a) => {
  * Removes all ads on the current page
  */
 function removeAllAds() {
-	var observer = new MutationObserver(function(mutations) {
+	var removeAllAdsOnPage = () => {
 		var divs = document.getElementsByTagName("div");
 		for (var div of divs) {
 			if (div.hasAttribute("align") && div.children.length >= 2 && div.children[1].tagName.toLowerCase() == "script") {
 				div.remove();
 			}
 		}
+	}
+	
+	var observer = new MutationObserver(function(mutations) {
+		removeAllAdsOnPage();
 	});
   
 	observer.observe(document, {attributes: false, childList: true, characterData: false, subtree:true});
+	removeAllAdsOnPage();
 }
 
 /**
