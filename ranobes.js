@@ -40,7 +40,6 @@ modifyBookmarks("finished", (a) => {
  */
 function removeAllAds() {
 	var observer = new MutationObserver(function(mutations) {
-		console.log("test");
 		var divs = document.getElementsByTagName("div");
 		for (var div of divs) {
 			if (div.hasAttribute("align") && div.children.length >= 2 && div.children[1].tagName.toLowerCase() == "script") {
