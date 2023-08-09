@@ -11,10 +11,10 @@
 const BASE_FOLDER = "Novel";
 
 /* Already seen novels */
-var allIds = getAllIds();
+//var allIds = getAllIds();
 removeAllAds();
 
-modifyBookmarks("not_finished", (a) => {
+/*modifyBookmarks("not_finished", (a) => {
     a.style.setProperty('color', 'black', 'important');
     if (a.parentElement.className === "title") {
         a.textContent = "❌ " + a.textContent;
@@ -33,7 +33,7 @@ modifyBookmarks("finished", (a) => {
     if (a.parentElement.className === "title") {
         a.textContent = "✅ " + a.textContent;
     }
-});
+});*/
 
 /**
  * Removes all ads on the current page
@@ -45,6 +45,11 @@ function removeAllAds() {
 			if (div.hasAttribute("align") && div.children.length >= 2 && div.children[1].tagName.toLowerCase() == "script") {
 				div.remove();
 			}
+		}
+		
+		var inses = document.getElementsByTagName("ins");
+		for (var ins of inses) {
+			ins.remove();
 		}
 	}
 	
