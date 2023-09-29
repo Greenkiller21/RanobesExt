@@ -14,7 +14,8 @@
   "content_scripts": [
     {
       "matches": ["*://ranobes.top/*"],
-      "js": ["ranobes.js"]
+      "js": ["ranobes.js"],
+      "run_at": "document_start"
     }
   ],
   "host_permissions": ["*://ranobes.net/*"]
