@@ -42,7 +42,7 @@ function removeAllAds() {
 	var removeAllAdsOnPage = () => {
 		var divs = document.getElementsByTagName("div");
 		for (var div of divs) {
-			if (div.hasAttribute("align") && div.children.length >= 2 && div.children[1].tagName.toLowerCase() == "script") {
+			if (div.classList.contains("free-support-top") || div.hasAttribute("align") && div.children.length >= 2 && div.children[1].tagName.toLowerCase() == "script") {
 				div.remove();
 			}
 		}
